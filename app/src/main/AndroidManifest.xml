@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Quizz">
-        <activity android:name=".PseudoActivity"></activity>
+        <activity android:name=".QuizQuestionsActivity"></activity>
+        <activity android:name=".EasyQuestions" />
+        <activity android:name=".FacileQuestionActivity" />
+        <activity android:name=".PseudoActivity" />
         <activity
             android:name=".MainActivity"
             android:windowSoftInputMode="adjustResize">
