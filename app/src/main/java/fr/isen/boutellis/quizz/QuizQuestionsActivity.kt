@@ -1,5 +1,6 @@
 package fr.isen.boutellis.quizz
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -14,7 +15,9 @@ import java.io.IOException
 class QuizQuestionsActivity : AppCompatActivity() {
     private val client = OkHttpClient()
     private lateinit var binding: ActivityQuizQuestionsBinding
-    private var data = null
+    private var data : List<Result> = listOf()
+    private var compteur : Int = 0
+    private var score : Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
 
 
@@ -24,11 +27,25 @@ class QuizQuestionsActivity : AppCompatActivity() {
         val profileName=intent.getStringExtra("pseudo")
         val difficulty = intent.getStringExtra("diff")
         val amount = intent.getStringExtra("amount")
-        Log.d("from quiez", profileName.toString())
-        Log.d("from quiez", difficulty.toString())
-        Log.d("from quiez",amount.toString())
-        Log.d("from quiiiiez test url","https://opentdb.com/api.php?amount="+amount.toString()+"&category=9&difficulty="+difficulty.toString()+"&type=multiple")
         run("https://opentdb.com/api.php?amount="+amount.toString()+"&category=9&difficulty="+difficulty.toString()+"&type=multiple")
+
+        binding.btn1.setOnClickListener {
+            checkAnswer(binding.btn1.text.toString())
+            quizHandler()
+        }
+        binding.btn2.setOnClickListener {
+            checkAnswer(binding.btn2.text.toString())
+            quizHandler()
+        }
+        binding.btn3.setOnClickListener {
+            checkAnswer(binding.btn3.text.toString())
+            quizHandler()
+        }
+        binding.btn4.setOnClickListener {
+            checkAnswer(binding.btn4.text.toString())
+            quizHandler()
+        }
+
 
     }
 
@@ -39,15 +56,26 @@ class QuizQuestionsActivity : AppCompatActivity() {
 
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {}
+
             override fun onResponse(call: Call, response: Response) {
-                val body = response?.body()?.string()
-               println(body)
-                val gson = GsonBuilder().create()
+               val body = response?.body()?.string()
                 val t = Gson().fromJson(body,Student::class.java)
-    println(t.results.get(0))
                 val q = t.results.get(0).question
-                binding.EasyQuestions.text = q.toString()
-            }
+
+                data = t.results
+                println(data)
+              runOnUiThread{
+                  binding.EasyQuestions.text = q
+                  binding.btn1.text = t.results[0].correct_answer
+                  binding.btn2.text =  t.results[0].incorrect_answers[0]
+                  binding.btn3.text =  t.results[0].incorrect_answers[1]
+                  binding.btn4.text =  t.results[0].incorrect_answers[2]
+
+
+              }
+
+
+                   }
         })
     }
 
@@ -64,6 +92,38 @@ class QuizQuestionsActivity : AppCompatActivity() {
         var correct_answer : String,
         var incorrect_answers : List<String>
     ) {
+    }
+
+    fun checkAnswer(str : String){
+        println(str)
+        println(data[compteur].correct_answer)
+        if (str==data[compteur].correct_answer){
+            score+=1
+
+        println(score)}
+
+    }
+   fun quizHandler(){
+        compteur++
+       if(compteur==data.size){
+           val intent = Intent(this, ScoreActivity2::class.java)
+           intent.putExtra("score",score.toString())
+           startActivity(intent)
+       }else{
+           runOnUiThread{
+               binding.EasyQuestions.text = data[compteur].question
+               binding.btn1.text = data[compteur].correct_answer
+               binding.btn2.text =  data[compteur].incorrect_answers[0]
+               binding.btn3.text =  data[compteur].incorrect_answers[1]
+               binding.btn4.text =  data[compteur].incorrect_answers[2]
+           }
+       }
+
+
+    }
+
+    fun handleAll(){
+
     }
 
 
