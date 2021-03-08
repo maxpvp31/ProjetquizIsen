@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/difficulty"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    tools:context=".DifficultyActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="39dp">
+
+        <TextView
+            android:id="@+id/EasyQuestions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text="Choose your difficulty ?"
+            android:textColor="#363A43"
+            android:textSize="22sp" />
+
+        <LinearLayout
+            android:id="@+id/ProgressDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+            <ProgressBar
+                android:id="@+id/ProgressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:indeterminate="false"
+                android:max="10"
+                android:minHeight="50dp"
+                android:progress="0" />
+
+            <TextView
+                android:id="@+id/ProgressPosition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="15dp"
+                android:text="0/10"
+                android:textColor="#7A8089"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/OptionOne"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/default_option_border_bg"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="Easy"
+            android:textColor="#7A8089"
+            android:textSize="18sp" />
+
+
+        <TextView
+            android:id="@+id/OptionTwo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/default_option_border_bg"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="Medium"
+            android:textColor="#7A8089"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/OptionThree"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/default_option_border_bg"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="Hard"
+            android:textColor="#7A8089"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/SubmitButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@color/purple_500"
+            android:text="Continue"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
