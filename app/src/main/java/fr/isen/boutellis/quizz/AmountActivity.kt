@@ -19,11 +19,11 @@ class AmountActivity : AppCompatActivity() {
         Log.d("from amount", profileName.toString())
         Log.d("from amount", difficulty.toString())
 
-        binding.SubmitButton.setOnClickListener {
+        binding.amountBtn.setOnClickListener {
 
 if (binding.phone.text.toString().length>0) {
     val intent = Intent(this, QuizQuestionsActivity::class.java)
-    intent.putExtra("diff", "Easy")
+    intent.putExtra("diff", difficulty)
     intent.putExtra("pseudo", profileName)
     intent.putExtra("amount", binding.phone.text.toString())
     startActivity(intent)

@@ -1,16 +1,20 @@
 package fr.isen.boutellis.quizz
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import fr.isen.boutellis.quizz.databinding.ActivityQuizQuestionsBinding
 import okhttp3.*
+
 import java.io.IOException
 
 
 class QuizQuestionsActivity : AppCompatActivity() {
     private val client = OkHttpClient()
     private lateinit var binding: ActivityQuizQuestionsBinding
+    private var data = null
     override fun onCreate(savedInstanceState: Bundle?) {
 
 
@@ -35,8 +39,31 @@ class QuizQuestionsActivity : AppCompatActivity() {
 
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {}
-            override fun onResponse(call: Call, response: Response) = println(response.body()?.string())
+            override fun onResponse(call: Call, response: Response) {
+                val body = response?.body()?.string()
+               println(body)
+                val gson = GsonBuilder().create()
+                val t = Gson().fromJson(body,Student::class.java)
+    println(t.results.get(0))
+                val q = t.results.get(0).question
+                binding.EasyQuestions.text = q.toString()
+            }
         })
+    }
+
+    data class Student (
+        var response_code: Int? ,
+        var results: List<Result>
+    ) {
+    }
+    data class Result (
+        var category: String ,
+        var type: String,
+        var difficulty : String,
+        var question : String,
+        var correct_answer : String,
+        var incorrect_answers : List<String>
+    ) {
     }
 
 
