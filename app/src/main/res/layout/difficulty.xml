@@ -59,50 +59,36 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/OptionOne"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/default_option_border_bg"
-            android:gravity="center"
-            android:padding="15dp"
-            android:text="Easy"
-            android:textColor="#7A8089"
-            android:textSize="18sp" />
-
-
-        <TextView
-            android:id="@+id/OptionTwo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/default_option_border_bg"
-            android:gravity="center"
-            android:padding="15dp"
-            android:text="Medium"
-            android:textColor="#7A8089"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/OptionThree"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/default_option_border_bg"
-            android:gravity="center"
-            android:padding="15dp"
-            android:text="Hard"
-            android:textColor="#7A8089"
-            android:textSize="18sp" />
 
         <Button
-            android:id="@+id/SubmitButton"
+            android:id="@+id/easy"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@color/purple_500"
-            android:text="Continue"
+            android:text="Easy"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@color/purple_500"
+            android:text="Medium"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/hard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@color/purple_500"
+            android:text="Hard"
             android:textColor="@android:color/white"
             android:textSize="18sp"
             android:textStyle="bold" />

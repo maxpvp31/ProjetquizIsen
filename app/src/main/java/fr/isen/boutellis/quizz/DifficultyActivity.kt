@@ -17,22 +17,31 @@ class DifficultyActivity : AppCompatActivity() {
         val profileName=intent.getStringExtra("pseudo")
         Log.d("from Difficulty", profileName.toString())
 
-        binding.OptionOne.setOnClickListener {
-            var btn: Button = binding.OptionOne as Button
-            var res: String = btn.getText().toString()
-            Log.d("string", res)
+        binding.easy.setOnClickListener {
 
 
             val intent = Intent(this, AmountActivity::class.java)
+            intent.putExtra("diff","Easy")
+            intent.putExtra("pseudo",profileName)
+
             startActivity(intent)
         }
 
-        binding.OptionTwo.setOnClickListener {
+        binding.medium.setOnClickListener {
 
+            val intent = Intent(this, AmountActivity::class.java)
+            intent.putExtra("diff","Medium")
+            intent.putExtra("pseudo",profileName)
+            startActivity(intent)
         }
 
-        binding.OptionThree.setOnClickListener {
+        binding.hard.setOnClickListener {
 
+            val intent = Intent(this, AmountActivity::class.java)
+            intent.putExtra("diff","Hard")
+            intent.putExtra("pseudo",profileName)
+
+            startActivity(intent)
         }
 
 
