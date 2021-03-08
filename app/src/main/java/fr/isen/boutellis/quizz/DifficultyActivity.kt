@@ -21,7 +21,7 @@ class DifficultyActivity : AppCompatActivity() {
 
 
             val intent = Intent(this, AmountActivity::class.java)
-            intent.putExtra("diff","Easy")
+            intent.putExtra("diff","easy")
             intent.putExtra("pseudo",profileName)
 
             startActivity(intent)
@@ -30,7 +30,7 @@ class DifficultyActivity : AppCompatActivity() {
         binding.medium.setOnClickListener {
 
             val intent = Intent(this, AmountActivity::class.java)
-            intent.putExtra("diff","Medium")
+            intent.putExtra("diff","medium")
             intent.putExtra("pseudo",profileName)
             startActivity(intent)
         }
@@ -38,7 +38,7 @@ class DifficultyActivity : AppCompatActivity() {
         binding.hard.setOnClickListener {
 
             val intent = Intent(this, AmountActivity::class.java)
-            intent.putExtra("diff","Hard")
+            intent.putExtra("diff","hard")
             intent.putExtra("pseudo",profileName)
 
             startActivity(intent)
