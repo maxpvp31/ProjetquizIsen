@@ -23,7 +23,7 @@ class AmountActivity : AppCompatActivity() {
 
 
             val intent = Intent(this, QuizQuestionsActivity::class.java)
-            intent.putExtra("diff","Easy")
+            intent.putExtra("diff",difficulty)
             intent.putExtra("pseudo",profileName)
             intent.putExtra("amount",binding.phone.text.toString())
             startActivity(intent)
