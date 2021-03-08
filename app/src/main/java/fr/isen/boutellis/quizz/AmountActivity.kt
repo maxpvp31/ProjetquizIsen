@@ -28,6 +28,7 @@ if (binding.phone.text.toString().length>0) {
     intent.putExtra("amount", binding.phone.text.toString())
     startActivity(intent)
 }
+
         }
 
 
