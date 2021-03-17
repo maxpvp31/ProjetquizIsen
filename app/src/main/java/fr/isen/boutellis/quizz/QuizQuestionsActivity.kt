@@ -18,6 +18,7 @@ class QuizQuestionsActivity : AppCompatActivity() {
     private var data : List<Result> = listOf()
     private var compteur : Int = 0
     private var score : Int = 0
+    private var amountToSend : String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
 
 
@@ -27,6 +28,7 @@ class QuizQuestionsActivity : AppCompatActivity() {
         val profileName=intent.getStringExtra("pseudo")
         val difficulty = intent.getStringExtra("diff")
         val amount = intent.getStringExtra("amount")
+        amountToSend = amount.toString()
         run("https://opentdb.com/api.php?amount="+amount.toString()+"&category=9&difficulty="+difficulty.toString()+"&type=multiple")
 
         binding.btn1.setOnClickListener {
@@ -108,6 +110,7 @@ class QuizQuestionsActivity : AppCompatActivity() {
        if(compteur==data.size){
            val intent = Intent(this, ScoreActivity2::class.java)
            intent.putExtra("score",score.toString())
+           intent.putExtra("amount",amountToSend)
            startActivity(intent)
        }else{
            runOnUiThread{
