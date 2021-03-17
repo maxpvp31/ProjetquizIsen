@@ -9,7 +9,9 @@ import com.google.gson.GsonBuilder
 import fr.isen.boutellis.quizz.databinding.ActivityQuizQuestionsBinding
 import okhttp3.*
 
+
 import java.io.IOException
+import kotlin.random.Random.Default.Companion
 
 
 class QuizQuestionsActivity : AppCompatActivity() {
@@ -127,8 +129,22 @@ class QuizQuestionsActivity : AppCompatActivity() {
 
     }
 
-    fun handleAll(){
+    fun sendToDb(){
+        val payload = "ee"
+        val requestBody  : RequestBody = RequestBody.create(JSON,payload)
+        val request = Request.Builder()
+                .method("POST", requestBody)
+                .url("url")
+                .build()
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                // Handle this
+            }
 
+            override fun onResponse(call: Call, response: Response) {
+                // Handle this
+            }
+        })
     }
 
 
