@@ -23,7 +23,7 @@ public class RecipeAdapter(private val context: Context,
         var recipe = getItem(p0) as ScoreActivity2.FromDb
 
         titleTextView.text = recipe.pseudo
-        titleTextView.text = recipe.score.toString() +'/' + recipe.amount.toString()
+        subtitleTextView.text = recipe.score.toString() +'/' + recipe.amount.toString()
 
 
         return rowView

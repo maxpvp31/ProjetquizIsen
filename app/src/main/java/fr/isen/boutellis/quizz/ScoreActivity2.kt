@@ -25,9 +25,9 @@ class ScoreActivity2 : AppCompatActivity() {
     private val notificationId = 101
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
-        listView = findViewById<ListView>(R.id.listViewQuiz)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_score2)
+
         createNotif()
         val score=intent.getStringExtra("score")
         val amount = intent.getStringExtra("amount")
@@ -80,7 +80,9 @@ class ScoreActivity2 : AppCompatActivity() {
 
                 runOnUiThread{
         val adapter = RecipeAdapter(this@ScoreActivity2,t.resultat)
-                    listView = adapter
+                    listView = findViewById<ListView>(R.id.listViewQuiz)
+
+                    listView.adapter = adapter
                 }
 
 
