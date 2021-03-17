@@ -26,6 +26,8 @@ if (binding.phone.text.toString().length>0) {
     intent.putExtra("diff", difficulty)
     intent.putExtra("pseudo", profileName)
     intent.putExtra("amount", binding.phone.text.toString())
+    intent.putExtra("amountInt", binding.phone.text.toString().toInt())
+
     startActivity(intent)
 }
 

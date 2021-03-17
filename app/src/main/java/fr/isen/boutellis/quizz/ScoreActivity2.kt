@@ -18,12 +18,14 @@ import okhttp3.*
 import java.io.IOException
 
 class ScoreActivity2 : AppCompatActivity() {
+    private lateinit var listView : ListView
     private val client = OkHttpClient()
     private  var url : String = "https://havephone.fr/api/v1/quiz"
     private val CHANNEL_ID = "channel_id_example_01"
     private val notificationId = 101
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
+        listView = findViewById<ListView>(R.id.listViewQuiz)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_score2)
         createNotif()
@@ -77,13 +79,8 @@ class ScoreActivity2 : AppCompatActivity() {
 
 
                 runOnUiThread{
-                  /*  binding.EasyQuestions.text = q
-                    binding.btn1.text = t.results[0].correct_answer
-                    binding.btn2.text =  t.results[0].incorrect_answers[0]
-                    binding.btn3.text =  t.results[0].incorrect_answers[1]
-                    binding.btn4.text =  t.results[0].incorrect_answers[2]
-*/
-
+        val adapter = RecipeAdapter(this@ScoreActivity2,t.resultat)
+                    listView = adapter
                 }
 
 
@@ -102,6 +99,8 @@ data class arrDB (
             var amount : Int
 
     ) {
+
+
     }
 }
 
