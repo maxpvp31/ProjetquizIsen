@@ -70,8 +70,10 @@ class ScoreActivity2 : AppCompatActivity() {
 
             override fun onResponse(call: Call, response: Response) {
                 val body = response?.body()?.string()
-                val t = Gson().fromJson(body, QuizQuestionsActivity.Student::class.java)
-                val q = t.results.get(0).question
+                Log.d("piste tes morts",body.toString())
+                val t = Gson().fromJson(body,arrDB ::class.java)
+                val q = t.resultat.get(0).pseudo
+                println(q)
 
 
                 runOnUiThread{
@@ -88,7 +90,11 @@ class ScoreActivity2 : AppCompatActivity() {
             }
         })
     }
+data class arrDB (
+    var resultat : List<FromDb>
+){
 
+}
     data class FromDb (
             var id: Int ,
             var pseudo: String,

@@ -108,9 +108,11 @@ class QuizQuestionsActivity : AppCompatActivity() {
    fun quizHandler(){
         compteur++
        if(compteur==data.size){
+
            val intent = Intent(this, ScoreActivity2::class.java)
            intent.putExtra("score",score.toString())
            intent.putExtra("amount",amountToSend)
+
            startActivity(intent)
        }else{
            runOnUiThread{
