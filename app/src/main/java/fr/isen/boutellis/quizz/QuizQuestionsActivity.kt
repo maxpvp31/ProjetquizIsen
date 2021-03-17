@@ -3,6 +3,7 @@ package fr.isen.boutellis.quizz
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -19,6 +20,7 @@ class QuizQuestionsActivity : AppCompatActivity() {
     private var compteur : Int = 0
     private var score : Int = 0
     private var amountToSend : String = ""
+    private var progressBar : Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
 
 
@@ -102,10 +104,15 @@ class QuizQuestionsActivity : AppCompatActivity() {
         if (str==data[compteur].correct_answer){
             score+=1
 
-        println(score)}
+        println(score)
+
+    }
+        binding.ProgressBar.progress+=1
 
     }
    fun quizHandler(){
+
+
         compteur++
        if(compteur==data.size){
            val intent = Intent(this, ScoreActivity2::class.java)
